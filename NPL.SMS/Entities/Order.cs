@@ -42,5 +42,12 @@ namespace R2S.Training.Entities
             EmployeeId = dr.Field<int>(3);
             Total = dr.Field<double>(4);
         }
+
+        public override string ToString()
+        {
+            return "Order ID: " + OrderId + ";          OrderDate: " + OderDate.ToShortDateString() +
+                ";          Customer ID: " + CustomerId + ";          Emplyee ID" + EmployeeId + ";          Total:" + Total;
+
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace R2S.Training.Entities
         }
         public override string ToString()
         {
-            return " Product ID: " + ProductID + "; Product Name: " + productName + "; Product Price: " + ProductPrice;
+            return " Product ID: " + ProductID + ";         Product Name: " + productName + ";           Product Price: " + ProductPrice;
         }
     }
 }

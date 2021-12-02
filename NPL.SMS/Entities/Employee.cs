@@ -38,5 +38,10 @@ namespace R2S.Training.Entities
             Salary = dr.Field<double>(2);
             SpvrId = dr.Field<int>(3);
         }
+        public override string ToString()
+        {
+            return "Employee ID: " + EmployeeId + ";         Employee Name: " + EmployeeName + 
+                ";         Salary: " + Salary + ";         Supervisior ID:" + SpvrId;
+        }
     }
 }
