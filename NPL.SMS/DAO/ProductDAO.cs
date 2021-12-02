@@ -16,9 +16,11 @@ namespace R2S.Training.DAO
         }
 
 
-        public List<Product> GetAllProduct()
+        public List<Product> GetAllProduct(string field = null, string keyword = null, string orderby = null)
         {
-            return dp.ExecuteQueryDataSet("select * from Product order by [Product_Name]", typeof(Product), CommandType.Text, null)?.Cast<Product>().ToList();
+            string sort = orderby != null ? (" order by [" + orderby + "]") : "";
+            string find = field != null ? (" where [" + field + "] = " + keyword) : "";
+            return dp.ExecuteQueryDataSet("select * from Product", typeof(Product), CommandType.Text, null)?.Cast<Product>().ToList();
         }
     }
 }
