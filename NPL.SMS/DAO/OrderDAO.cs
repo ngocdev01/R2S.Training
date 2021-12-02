@@ -21,7 +21,7 @@ namespace R2S.Training.DAO
         {
             string sort = orderby != null ? (" order by [" + orderby + "]") : "";
             string find = field != null ? (" where [" + field + "] = " + keyword) : "";
-            return dp.ExecuteQueryDataSet("select * from Orders" + find + sort, typeof(Order), CommandType.Text, null).Cast<Order>().ToList();
+            return dp.ExecuteQueryToList("select * from Orders" + find + sort, typeof(Order), CommandType.Text, null).Cast<Order>().ToList();
         }
     }
 }

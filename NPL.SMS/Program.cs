@@ -37,6 +37,12 @@ namespace R2S.Training
                     Console.WriteLine(order.OderDate);
 
                 }
+
+            string error = "";
+            Customer cs = new Customer();
+            cs.CustomerName = "Ngoc";
+            if (!dao1.InsertCustomer(cs, ref error))
+                Console.WriteLine(error);
             Console.ReadLine();
             
         }

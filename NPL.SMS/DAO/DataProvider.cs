@@ -27,7 +27,7 @@ namespace R2S.Training.DAO
 			connectionStringBuilder.IntegratedSecurity = true;
 			return connectionStringBuilder.ConnectionString;
 		}
-		public List<IConvert> ExecuteQueryDataSet(
+		public List<IConvert> ExecuteQueryToList(
 			string strSQL,Type type, CommandType ct,
 			params SqlParameter[] param)
 		{
@@ -56,33 +56,7 @@ namespace R2S.Training.DAO
 			
 		}
 
-		public DataTable ExecuteQueryToList(
-			string strSQL, Type type, CommandType ct,
-			params SqlParameter[] param)
-		{
-
-			cmd.CommandText = strSQL;
-			cmd.CommandType = ct;
-			if (param != null)
-			{
-				cmd.Parameters.Clear();
-				foreach (SqlParameter p in param)
-					cmd.Parameters.Add(p);
-			}
-			adp = new SqlDataAdapter(cmd);
-			DataSet ds = new DataSet();
-			try
-			{
-
-				adp.Fill(ds);
-
-			}
-			catch (Exception)
-			{
-				return null;
-			}
-			return ds.Tables[0];
-		}
+		
 
 
 		public bool MyExecuteNonQuery(string strSQL,

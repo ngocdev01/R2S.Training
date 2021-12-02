@@ -20,7 +20,7 @@ namespace R2S.Training.DAO
         {
             string sort = orderby != null ? (" order by [" + orderby + "]") : "";
             string find = field != null ? (" where [" + field + "] = " + keyword) : "";
-            return dp.ExecuteQueryDataSet("select * from Product", typeof(Product), CommandType.Text, null)?.Cast<Product>().ToList();
+            return dp.ExecuteQueryToList("select * from Product", typeof(Product), CommandType.Text, null)?.Cast<Product>().ToList();
         }
     }
 }
