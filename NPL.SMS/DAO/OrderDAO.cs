@@ -17,7 +17,7 @@ namespace R2S.Training.DAO
 
             
         }
-        public List<Order> GetAllOrder(string field = null, string keyword = null, string orderby = null)
+        public List<Order> GetAllOrderByCustomerId(string field = null, string keyword = null, string orderby = null)
         {
             string sort = orderby != null ? (" order by [" + orderby + "]") : "";
             string find = field != null ? (" where [" + field + "] = " + keyword) : "";

@@ -12,28 +12,30 @@ namespace R2S.Training
     {
         static void Main(string[] args)
         {
-            ProductDAO dao = new ProductDAO();
-            CustomerDAO dao1 = new CustomerDAO();
-            OrderDAO dao2 = new OrderDAO();
+            ProductDAO daoProcduct = new ProductDAO();
+            CustomerDAO daoCustomer = new CustomerDAO();
+            OrderDAO daoOrder= new OrderDAO();
             LineItemDAO daoLineItem = new LineItemDAO();
 
-            List<Product> li = dao.GetAllProduct();
-            List<Customer> li1 = dao1.GetAllCustomer(null,null,"customer_name");
-            List<Order> li2 = dao2.GetAllOrder("customer_id", "3");
-            if(li!=null)
-                foreach(Product product in li)
+            List<Product> liProduct = daoProcduct.GetAllProduct();
+            List<Customer> liCustomer = daoCustomer.GetAllCustomer(null,null,"customer_name");
+            List<Order> liOrder= daoOrder.GetAllOrderByCustomerId("customer_id", "3");
+            List<LineItem> liLine = daoLineItem.GetAllItemsByOrderId("order_id","2");
+
+            if(liProduct!=null)
+                foreach(Product product in liProduct)
                 {
                     Console.WriteLine(product.ToString());
                
                 }
-            if (li1 != null)
-                foreach (Customer customer in li1)
+            if (liCustomer != null)
+                foreach (Customer customer in liCustomer)
                 {
                     Console.WriteLine(customer.ToString());
 
                 }
-            if (li2 != null)
-                foreach (Order order in li2)
+            if (liOrder != null)
+                foreach (Order order in liOrder)
                 {
                     Console.WriteLine(order.OderDate);
 
@@ -52,7 +54,7 @@ namespace R2S.Training
                 Console.WriteLine(error);
             Console.WriteLine("Delete done");*/
 
-            if (!dao1.UpdateCustomer(cs, ref error))
+            if (!daoCustomer.UpdateCustomer(cs, ref error))
                 Console.WriteLine(error);
             Console.WriteLine("Update done");
 

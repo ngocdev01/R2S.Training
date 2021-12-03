@@ -29,5 +29,13 @@ namespace R2S.Training.DAO
                 new SqlParameter("@quantity",lineitem.Quantity),
                 new SqlParameter("@price",lineitem.Price));
         }
+
+        public List<LineItem> GetAllItemsByOrderId(string field = null, string keyword = null, string orderby = null)
+        {
+            string sort = orderby != null ? (" order by [" + orderby + "]") : "";
+            string find = field != null ? (" where [" + field + "] = " + keyword) : "";
+            return dp.ExecuteQueryToList("select * from LineItem" + find + sort, typeof(LineItem), CommandType.Text, null).Cast<LineItem>().ToList();
+        }
+
     }
 }
