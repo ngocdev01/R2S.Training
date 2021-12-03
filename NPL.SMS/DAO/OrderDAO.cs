@@ -26,11 +26,10 @@ namespace R2S.Training.DAO
 
         public bool InsertOrder(Order order, ref string error)
         {
-            return dp.MyExecuteNonQuery("spOrder",CommandType.StoredProcedure,ref error, 
+            return dp.MyExecuteNonQuery("spAddOrder",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@order_date",order.OderDate),
                 new SqlParameter("@customer_id",order.CustomerId),
-                new SqlParameter("@employee_id",order.EmployeeId),
-                new SqlParameter("@total",order.Total) );
+                new SqlParameter("@employee_id",order.EmployeeId) );
         }
 
         public bool UpdateOrderTotal(Order order, ref string error)
