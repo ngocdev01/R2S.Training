@@ -23,5 +23,20 @@ namespace R2S.Training.DAO
             string find = field != null ? (" where [" + field + "] = " + keyword) : "";
             return dp.ExecuteQueryToList("select * from Orders" + find + sort, typeof(Order), CommandType.Text, null).Cast<Order>().ToList();
         }
+
+        public bool InsertOrder(Order order, ref string error)
+        {
+            return dp.MyExecuteNonQuery("spOrder",CommandType.StoredProcedure,ref error, 
+                new SqlParameter("@order_date",order.OderDate),
+                new SqlParameter("@customer_id",order.CustomerId),
+                new SqlParameter("@employee_id",order.EmployeeId),
+                new SqlParameter("@total",order.Total) );
+        }
+
+        public bool UpdateOrderTotal(Order order, ref string error)
+        {
+            return dp.MyExecuteNonQuery("spUpdateOrderTotal",CommandType.StoredProcedure,ref error, 
+                new SqlParameter("@order_id", order.OrderId) );
+        } 
     }
 }

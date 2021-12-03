@@ -29,5 +29,18 @@ namespace R2S.Training.DAO
             return dp.MyExecuteNonQuery("spAddCustomer",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@customer_name",customer.CustomerName));
         }
+
+        public bool DeleteCustomer(Customer customer, ref string error)
+        {
+            return dp.MyExecuteNonQuery("spDeleteCustomer",CommandType.StoredProcedure,ref error, 
+                new SqlParameter("@customer_id",customer.CustomerId));
+        }
+
+        public bool UpdateCustomer(Customer customer, ref string error)
+        {
+            return dp.MyExecuteNonQuery("spUpdateCustomer",CommandType.StoredProcedure,ref error, 
+                new SqlParameter("@customer_id",customer.CustomerId),
+                new SqlParameter("@customer_name",customer.CustomerName) );
+        }
     }
 }

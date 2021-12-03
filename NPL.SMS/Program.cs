@@ -39,13 +39,23 @@ namespace R2S.Training
 
                 }
 
-            /*string error = "";
+            string error = "";
             Customer cs = new Customer();
-            cs.CustomerName = "Ngoc";
-            if (!dao1.InsertCustomer(cs, ref error))
+            cs.CustomerName = "Ngoccc";
+            cs.CustomerId =18 ;
+
+            /*if (!dao1.InsertCustomer(cs, ref error))
                 Console.WriteLine(error);
             Console.ReadLine();*/
             
+            /*if (!dao1.DeleteCustomer(cs, ref error))
+                Console.WriteLine(error);
+            Console.WriteLine("Delete done");*/
+
+            if (!dao1.UpdateCustomer(cs, ref error))
+                Console.WriteLine(error);
+            Console.WriteLine("Update done");
+
             LineItem lineitem = new LineItem();
             lineitem.OrderId =1;
             double total_order= daoLineItem.ComputeOrderTotal(lineitem);
