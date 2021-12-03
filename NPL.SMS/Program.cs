@@ -15,6 +15,7 @@ namespace R2S.Training
             ProductDAO dao = new ProductDAO();
             CustomerDAO dao1 = new CustomerDAO();
             OrderDAO dao2 = new OrderDAO();
+            LineItemDAO daoLineItem = new LineItemDAO();
 
             List<Product> li = dao.GetAllProduct();
             List<Customer> li1 = dao1.GetAllCustomer(null,null,"customer_name");
@@ -38,13 +39,18 @@ namespace R2S.Training
 
                 }
 
-            string error = "";
+            /*string error = "";
             Customer cs = new Customer();
             cs.CustomerName = "Ngoc";
             if (!dao1.InsertCustomer(cs, ref error))
                 Console.WriteLine(error);
-            Console.ReadLine();
+            Console.ReadLine();*/
             
+            LineItem lineitem = new LineItem();
+            lineitem.OrderId =1;
+            double total_order= daoLineItem.ComputeOrderTotal(lineitem);
+            Console.WriteLine("total price {0}",total_order);
+            Console.ReadKey();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace R2S.Training.DAO
 
         public bool InsertCustomer(Customer customer, ref string error)
         {
-            return dp.MyExecuteNonQuery("spInsertCustomer",CommandType.StoredProcedure,ref error, 
+            return dp.MyExecuteNonQuery("spAddCustomer",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@customer_name",customer.CustomerName));
         }
     }

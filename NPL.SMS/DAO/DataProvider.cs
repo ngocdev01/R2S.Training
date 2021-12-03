@@ -22,10 +22,11 @@ namespace R2S.Training.DAO
 		string GetConnectionString()
 		{
 			SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
-			connectionStringBuilder.DataSource = "(local)\\SQLEXPRESS";
-			connectionStringBuilder.InitialCatalog = "SMS";
+			connectionStringBuilder.DataSource =  @"ADMINMI-QJ4NRGA\MISAMIMOSA2014";
+			connectionStringBuilder.InitialCatalog = "OOP";
 			connectionStringBuilder.IntegratedSecurity = true;
 			return connectionStringBuilder.ConnectionString;
+
 		}
 		public List<IConvert> ExecuteQueryToList(
 			string strSQL,Type type, CommandType ct,
@@ -56,7 +57,29 @@ namespace R2S.Training.DAO
 			
 		}
 
-		
+		public DataSet ExecuteQueryDataSet(
+			string strSQL, CommandType ct,
+			params SqlParameter[] param)
+		{
+			cmd.CommandText = strSQL;
+			cmd.CommandType = ct;
+			if (param != null)
+			{
+				cmd.Parameters.Clear();
+				foreach (SqlParameter p in param)
+					cmd.Parameters.Add(p);
+			}
+			adp = new SqlDataAdapter(cmd);
+			DataSet ds = new DataSet();
+			try
+			{		
+				adp.Fill(ds);
+			}catch(Exception)
+            {
+				return null;
+            }			
+			return ds;
+		}
 
 
 		public bool MyExecuteNonQuery(string strSQL,
