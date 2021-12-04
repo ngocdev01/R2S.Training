@@ -3,10 +3,11 @@ using System.Linq;
 using System.Data;
 using R2S.Training.Entities;
 using System.Data.SqlClient;
+using System;
 
 namespace R2S.Training.DAO
 {
-    class LineItemDAO
+    class LineItemDAO : ILineItemDAO
     {
         DataProvider dp;
 
@@ -21,7 +22,7 @@ namespace R2S.Training.DAO
                 new SqlParameter("@order_id",lineitem.OrderId)).Tables[0].Rows[0][0].ToString());
         }
 
-        public bool InsertLineItem(LineItem lineitem, ref string error)
+        public bool AddLineItem(LineItem lineitem, ref string error)
         {
             return dp.MyExecuteNonQuery("spAddLineItem",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@order_id",lineitem.OrderId),
@@ -37,5 +38,14 @@ namespace R2S.Training.DAO
             return dp.ExecuteQueryToList("select * from LineItem" + find + sort, typeof(LineItem), CommandType.Text, null).Cast<LineItem>().ToList();
         }
 
+        public bool AddLineItem(LineItem item)
+        {
+            string e = "";
+            return dp.MyExecuteNonQuery("spAddLineItem", CommandType.StoredProcedure, ref e,
+                new SqlParameter("@order_id", item.OrderId),
+                new SqlParameter("@product_id", item.ProductId),
+                new SqlParameter("@quantity", item.Quantity),
+                new SqlParameter("@price", item.Price));
+        }
     }
 }

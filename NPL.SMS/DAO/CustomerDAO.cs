@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace R2S.Training.DAO
 {
-    public class CustomerDAO
+    public class CustomerDAO : ICustomerDAO
     {
         DataProvider dp;
 
@@ -24,7 +24,7 @@ namespace R2S.Training.DAO
             return dp.ExecuteQueryToList("select * from Customer" + find + sort, typeof(Customer), CommandType.Text, null)?.Cast<Customer>().ToList();
         }
 
-        public bool InsertCustomer(Customer customer, ref string error)
+        public bool AddCustomer(Customer customer, ref string error)
         {
             return dp.MyExecuteNonQuery("spAddCustomer",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@customer_name",customer.CustomerName));

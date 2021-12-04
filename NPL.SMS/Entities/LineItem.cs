@@ -37,7 +37,7 @@ namespace R2S.Training.Entities
             OrderId = dr.Field<int>(0);
             ProductId = dr.Field<int>(2);
             Quantity = dr.Field<int>(2);
-            Price = dr.Field<int>(3);
+            Price = dr.Field<double>(3);
         }
         public override string ToString()
         {

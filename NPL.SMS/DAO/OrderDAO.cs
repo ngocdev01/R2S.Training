@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using R2S.Training.Entities;
-
+using System.Data.SqlClient;
 
 namespace R2S.Training.DAO
 {
-    public class OrderDAO
+    public class OrderDAO : IOrderDAO
     {
         DataProvider dp;
 
@@ -24,7 +24,7 @@ namespace R2S.Training.DAO
             return dp.ExecuteQueryToList("select * from Orders" + find + sort, typeof(Order), CommandType.Text, null).Cast<Order>().ToList();
         }
 
-        public bool InsertOrder(Order order, ref string error)
+        public bool AddOrder(Order order, ref string error)
         {
             return dp.MyExecuteNonQuery("spAddOrder",CommandType.StoredProcedure,ref error, 
                 new SqlParameter("@order_date",order.OderDate),
@@ -32,10 +32,10 @@ namespace R2S.Training.DAO
                 new SqlParameter("@employee_id",order.EmployeeId) );
         }
 
-        public bool UpdateOrderTotal(Order order, ref string error)
+        public bool UpdateOrderTotal(int orderId, ref string error)
         {
             return dp.MyExecuteNonQuery("spUpdateOrderTotal",CommandType.StoredProcedure,ref error, 
-                new SqlParameter("@order_id", order.OrderId) );
+                new SqlParameter("@order_id", orderId) );
         } 
     }
 }

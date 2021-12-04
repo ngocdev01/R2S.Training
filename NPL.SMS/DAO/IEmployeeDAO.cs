@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace R2S.Training.DAO
 {
-    public class EmployeeDAO : IEmployeeDAO
+    interface IEmployeeDAO
     {
-        DataProvider dp;
     }
 }
