@@ -22,8 +22,8 @@ namespace R2S.Training.DAO
 		string GetConnectionString()
 		{
 			SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
-			connectionStringBuilder.DataSource =  @"ADMINMI-QJ4NRGA\MISAMIMOSA2014";
-			connectionStringBuilder.InitialCatalog = "OOP";
+			connectionStringBuilder.DataSource = "(local)\\SQLEXPRESS";
+			connectionStringBuilder.InitialCatalog = "SMS";
 			connectionStringBuilder.IntegratedSecurity = true;
 			return connectionStringBuilder.ConnectionString;
 

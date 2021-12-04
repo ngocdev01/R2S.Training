@@ -6,7 +6,7 @@ using R2S.Training.Entities;
 
 namespace R2S.Training.DAO
 {
-    public class ProductDAO
+    public class ProductDAO : IProductDAO
     {
         DataProvider dp;
 

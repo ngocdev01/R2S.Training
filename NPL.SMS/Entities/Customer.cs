@@ -33,7 +33,7 @@ namespace R2S.Training.Entities
 
         public override string ToString()
         {
-            return "Customer ID: "+CustomerId+";          Customer Name: "+CustomerName;
+            return "Customer ID: " + CustomerId + "\t\t\tCustomer Name: " + CustomerName;
         }
     }
 }

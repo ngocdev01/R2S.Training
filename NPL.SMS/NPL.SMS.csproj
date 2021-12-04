@@ -46,6 +46,11 @@
     <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\EmployeeDAO.cs" />
+    <Compile Include="DAO\ICustomerDAO.cs" />
+    <Compile Include="DAO\IEmployeeDAO.cs" />
+    <Compile Include="DAO\ILineItemDAO.cs" />
+    <Compile Include="DAO\IOrderDAO.cs" />
+    <Compile Include="DAO\IProductDAO.cs" />
     <Compile Include="DAO\LineItemDAO.cs" />
     <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
@@ -55,7 +60,7 @@
     <Compile Include="Entities\LineItem.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\SaleManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
