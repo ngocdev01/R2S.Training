@@ -1,8 +1,8 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using R2S.Training.Entities;
+using System.Data.SqlClient;
 
 
 namespace R2S.Training.DAO

@@ -40,7 +40,13 @@ namespace R2S.Training
                     Console.WriteLine(order.OderDate);
 
                 }
+             if (liLine != null)
+                foreach (LineItem line in liLine)
+                {
+                    Console.WriteLine(line.ToString());
 
+                }
+            Console.ReadKey();
             string error = "";
             Customer cs = new Customer();
             cs.CustomerName = "Ngoccc";
@@ -54,7 +60,7 @@ namespace R2S.Training
                 Console.WriteLine(error);
             Console.WriteLine("Delete done");*/
 
-            if (!daoCustomer.UpdateCustomer(cs, ref error))
+            /*if (!daoCustomer.UpdateCustomer(cs, ref error))
                 Console.WriteLine(error);
             Console.WriteLine("Update done");
 
@@ -62,7 +68,7 @@ namespace R2S.Training
             lineitem.OrderId =1;
             double total_order= daoLineItem.ComputeOrderTotal(lineitem);
             Console.WriteLine("total price {0}",total_order);
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
     }
 }
